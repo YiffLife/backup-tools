@@ -1,0 +1,14 @@
+CHANGE LOG
+
+V1.1
+
+Fixed: Added full file paths to mitigate cron failures
+
+Mitigated: Added env variables to script
+
+Todo: Move variables into a config file for easier setup. Apparently crontab really prefers absolute and full file paths
+
+V1 - INITIAL COMMIT
+
+Basic backup script for any sever to S3 or B2 service using restic
+
