@@ -1,9 +1,14 @@
-cd /home/mastodon/mastodon
-echo "--------------@@@------------------" >> /home/mastodon/backup_cron.log
-echo "-------initiating restic backup $(date +%Y%m%d_%H%M%S)" >> /home/mastodon/backup_cron.log
-restic -r b2:yl-backup backup /home/mastodon >> /home/mastodon/backup_cron.log
-echo "-------finished restic backup $(date +%Y%m%d_%H%M%S)" >> /home/mastodon/backup_cron.log
-echo "-------initiating restic forget" >> /home/mastodon/backup_cron.log
-restic forget --keep-last 4 --keep-daily 7 --keep-weekly 8 --keep-monthly 24
-echo "-------finished restic forget" >> /home/mastodon/backup_cron.log
-echo "--------------###------------------" >> /home/mastodon/backup_cron.log
+export B2_ACCOUNT_KEY="$key" 
+export B2_ACCOUNT_ID="$id" 
+export RESTIC_REPOSITORY="$repo" 
+export RESTIC_PASSWORD_FILE="$pwfilepath" 
+
+cd /home/mastodon/mastodon 
+DATE=$(date +%Y%m%d_%H%M%S) 
+touch /home/mastodon/logs/backup/backup_$DATE.log 
+echo "-------initiating restic backup $(date +%Y%m%d_%H%M%S)" >> /home/mastodon/logs/backup/backup_$DATE.log 
+/usr/local/bin/restic -r $repo backup /home/mastodon >> /home/mastodon/logs/backup/backup_$DATE.log
+echo "-------finished restic backup $(date +%Y%m%d_%H%M%S)" >> /home/mastodon/logs/backup/backup_$DATE.log 
+echo "-------initiating restic forget" >> /home/mastodon/logs/backup/backup_$DATE.log 
+/usr/local/bin/restic forget --keep-last 4 --keep-daily 7 --keep-weekly 8 --keep-monthly 24 >> /home/mastodon/logs/backup/backup_$DATE.log
+echo "-------finished restic forget" >> /home/mastodon/logs/backup/backup_$DATE.log 
