@@ -1,3 +1,8 @@
+#!/bin/sh
+
+# Cronitor URL - optional
+MONITOR_URL='https://cronitor.link/p/b437916643d24eea9a322ce3de64709b/sNMIyG'
+
 # Keys for accessing the repository
 # https://restic.readthedocs.io/en/latest/030_preparing_a_new_repo.html?highlight=b2#backblaze-b2
 export B2_ACCOUNT_KEY="$key"
