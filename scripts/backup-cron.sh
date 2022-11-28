@@ -27,7 +27,7 @@ echo "-------initiating restic forget" >> /home/mastodon/logs/backup/backup_$DAT
 
 # Let's forget some old backups, don't want to end up with terabytes of backups. We're not made of money, I'm sure.
 
-/usr/local/bin/restic forget --keep-last 4 --keep-daily 7 --keep-weekly 8 --keep-monthly 24 >> /home/mastodon/logs/backup/backup_$DATE.log
+/usr/local/bin/restic forget --keep-last 4 --keep-daily 7 --keep-weekly 4 --keep-monthly 4 >> /home/mastodon/logs/backup/backup_$DATE.log
 
 echo "-------finished restic forget" >> /home/mastodon/logs/backup/backup_$DATE.log
 
