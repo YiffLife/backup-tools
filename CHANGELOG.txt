@@ -1,5 +1,12 @@
 CHANGE LOG
 
+V2
+
+Added Cronitor variables
+Added database dump script
+Added nginx backups
+Added deletion of old logs
+
 V1.1
 
 Fixed: Added full file paths to mitigate cron failures
